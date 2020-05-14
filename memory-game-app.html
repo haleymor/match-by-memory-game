@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Match by Memory</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+  crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="wrapper">
+    <h1>Match by Memory Game</h1>
+  </header>
+  
+  <section class="score-panel wrapper">
+    <ul class="stars">
+      <li>
+        <i class="fa fa-star"></i>
+      </li>
+      <li>
+        <i class="fa fa-star"></i>
+      </li>
+      <li>
+        <i class="fa fa-star"></i>
+      </li>
+    </ul>
+  </section>
+  
+  <section class="cards wrapper">
+    <ul class="deck" id="card-deck">
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+      <li class="card" type="">
+        <i class=""></i>
+      </li>
+    </ul>
+  </section>
+  
+  <section class="overlay wrapper" id="popup1">
+    <div class="pop-up">
+      <h2>Congratulations!</h2>
+      <a class="close" href="#">x</a>
+      <div class="content-1">
+        <h3>Congratulations, you're a winner!!</h3>
+      </div>
+      <div class="content-2">
+        <p>You made <span id=final-move> </span> moves </p>
+        <p>in <span id="total-time"></span></p>
+        <p>Rating: <span id="star-rating"></span></p>
+      </div>
+      <button id="play-again">
+        <a href="">Play Again</a>
+      </button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
