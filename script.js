@@ -1,30 +1,30 @@
-// cards array will hold all cards 
+// let cards array hold each card
 let card = document.getElementsByClassName("card");
 let cards = [...card];
 
 // deck of all cards in game
 const deck = document.getElementById("card-deck");
 
-// declare move variable
+// let move variable start at zero and have one move be counted as two opened cards
 let moves = 0;
 let counter = document.querySelector(".moves");
 
-// declare variable for star icons
-const stars = document.querySelectorAll(".fa-star");
+// let stars be equal to star icons
+let stars = document.querySelectorAll(".fa-star");
 
-//declaring variable of matchedCards
+//let matched card be represented by cards with class match
 let matchedCard = document.getElementsByClassName("match");
 
-// stars list
+// let stars list be equal to li with class of star
 let starsList = document.querySelectorAll(".stars li");
 
-// close icon in modal
+// let close icon be the x used to close popUp
 let closeIcon = document.querySelector(".close");
 
-//declare modal 
-let modal = document.getElementById("popup1");
+//let popUp be element with id popup1
+let popUp = document.getElementById("popup1");
 
-// array for opened cards
+// empty array for opened cards
 let openedCards = [];
 
 // display card function toggles between open and show classes to display card on click
@@ -36,13 +36,6 @@ const displayCard = function() {
   // once card has been shown, it cannot be clicked on again until it has been closed
   this.classList.toggle("disabled");
 }
-
-// for each card attach an event listener for click, then run display card function
-for (i = 0; i < cards.length; i++){
-  card = cards[i];
-  card.addEventListener("click", displayCard);
-  card.addEventListener("click", cardOpen);
-};
 
 // shuffle deck of cards on load or restart using Fisher-Yates Shuffle
 function shuffle(array) {
@@ -75,8 +68,18 @@ function startGame() {
     cards[i].classList.remove("show", "open", "match", "disabled");
   }
   // reset moves
+  // let moves = 0;
+  // counter.innerHTML = moves;
   // reset rating
-  // reset timer
+  for (let i=0; i < stars.length; i++) {
+    stars[i].style.color = "#FFD700";
+    stars[i].style.visibility = "visible";
+  }
+  // reset timer when new game starts
+  // let timer = document.querySelector(".timer");
+  // timer.innerHTML = "0 mins 0 secs";
+  //clear any running interval
+  // clearInterval(interval);
 }
 
 // once the window page has loaded, run start game function to ensure that a shuffled deck in displayed
@@ -90,8 +93,8 @@ function cardOpen() {
   const arrayLength = openedCards.length;
   // if cards in array is equal to 2 (two cards needed to check for match) check if cards match
   if(arrayLength === 2) {
-    // add to move count
-    // moveCounter();
+    // when two cards have been opened run moveCounter function
+    moveCounter();
     // if type of open cards are equal
     if(openedCards[0].type === openedCards[1].type){
       // run match function
@@ -122,7 +125,7 @@ function unmatched() {
   openedCards[1].classList.add("unmatched");
   // run disable function, to disallow player from opening more than two cards
   disable();
-  // after set time remove show, open, and unmatched classes from both cards in openedCards array, allows non-matches to be clicked and added to openedCards array again and checked for new match or unmatch
+  // after 1.1s remove show, open, and unmatched classes from both cards in openedCards array, allows non-matches to be clicked and added to openedCards array again and checked for new match or unmatch
   setTimeout(function() {
     openedCards[0].classList.remove("show", "open", "unmatched");
     openedCards[1].classList.remove("show", "open", "unmatched");
@@ -153,3 +156,104 @@ function enable() {
     }
   });
 }
+
+//game to display current number of moves a player has made
+function moveCounter() {
+  // add 1 to move variable
+  moves++;
+  counter.innerHTML = moves;
+
+  //start timer on first move
+  if (moves == 1) {
+    second = 0;
+    minute = 0;
+    hour = 0;
+    startTimer();
+  }
+
+  // set a star rating based on number of moves made
+  // if number of moves is greater than 8 but less than 12
+  if (moves > 8 && moves < 12) {
+    // for each star
+    for (i = 0; i < 3; i++) {
+      //if 2 or more stars
+      if(i > 1) {
+        // collapse visibility 
+        stars[i].style.visibility = "collapse";
+      }
+    }
+    // else if moves are greater than 13 
+  } else if (moves > 13) {
+    // for each star
+    for (i = 0; i < 3; i++) {
+      // if 1 or more stars
+      if (i > 0) {
+        // collapse visibility
+        stars[i].style.visibility = "collapse"; 
+      }
+    }
+  }
+}
+
+//when player starts game, timer to start
+//once player wins game, timer to stop
+let second = 0, minute = 0;
+let timer = document.querySelector(".timer");
+let interval;
+
+function startTimer() {
+  interval = setInterval(function() {
+    timer.innerHTML = minute+"mins "+second+"secs";
+    second++;
+    if(second == 60) {
+      minute++;
+      second = 0;
+    }
+    if(minute == 60) {
+      hour++;
+      minute = 0;
+    }
+  },1000);
+}
+
+// have a congratulations pop-up appear when player wins the game, i.e. when matched card array contains all 16 cards in deck
+function congratulations() {
+  if (matchedCard.length == 16) {
+    clearInterval(interval);
+    finalTime = timer.innerHTML;
+    //display pop-up
+    popUp.classList.add("show");
+    //let star rating equal number of stars
+    let starRating = document.querySelector(".stars").innerHTML;
+    //display number of moves
+    document.getElementById("finalMove").innerHTML = moves;
+    // display star rating
+    document.getElementById("starRating").innerHTML = starRating;
+    //display total time
+    document.getElementById("totalTime").innerHTML = finalTime;
+    //close icon for popUp
+    closePopUp();
+  };
+}
+
+//close popUp
+function closePopUp() {
+  closeIcon.addEventListener("click", function() {
+    popUp.classList.remove("show");
+    startGame();
+  });
+}
+
+// function to play again
+function playAgain() {
+  popUp.classList.remove("show");
+  startGame();
+}
+
+// for each card attach an event listener for click, then run display card function
+for (i = 0; i < cards.length; i++) {
+  card = cards[i];
+  card.addEventListener("click", displayCard);
+  card.addEventListener("click", cardOpen);
+  card.addEventListener("click", congratulations);
+};

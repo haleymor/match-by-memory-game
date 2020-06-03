@@ -123,15 +123,98 @@ p {
 	display: inline-block;
 }
 
+.score-panel .restart {
+	float: right;
+	cursor: pointer;
+}
+
 
 .fa-star {
 	color: #f2c57c;
 }
 
+.timer {
+	display: inline-block;
+	margin: 0 16px;
+}
+
 
 /*
- * Styles for congratulations modal
+ * Styles for congratulations popUp
  */
+
+.overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	transition: opacity 500ms;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.overlay:target {
+	visibility: visible;
+	opacity: 1;
+}
+
+.pop-up {
+	margin: 70px auto;
+	padding: 20px;
+	background: #fff;
+	border-radius: 5px;
+	width: 85%;
+	position: relative;
+	transition: all 5s ease-in-out;
+}
+
+.pop-up h2 {
+	margin-top: 0;
+	color: #333;
+}
+
+.pop-up .close {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	transition: all 200ms;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #333;
+}
+
+.pop-up .close:hover {
+	color: #E5F720;
+}
+
+.pop-up .content-1, .content-2 {
+	max-height: 30%;
+	overflow: auto;
+	text-align: center;
+}
+
+.show {
+	visibility: visible;
+	opacity: 100;
+}
+
+#starRating li {
+	display: inline-block;
+}
+
+#play-again {
+	background: #141214;
+	padding: 12px 16px;
+	font-size: 18px;
+	display: block;
+	margin: 0 auto;
+	width: 50%;
+	color: #fff;
+	border-radius: 5px;
+}
 
 
 
