@@ -82,8 +82,24 @@ p {
 	font-size: 33px;
 }
 
-/* no match color -> #ed6a5a */
-/* match color -> #f2c57c */
+.deck .card.match {
+	cursor: default;
+	background: #f2c57c;
+	font-size: 33px;
+	animation-name: rubberBand;
+	animation-duration: .75s;
+}
+
+.deck .card.unmatched {
+	animation-name: pulse;
+	animation-duration: .75s;
+	background: #ed6a5a;
+}
+
+.deck .card.disabled {
+	pointer-events: none;
+	opacity: 0.9;
+}
 
 /*
  * Styles for the Score Panel
