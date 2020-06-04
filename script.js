@@ -27,6 +27,14 @@ let popUp = document.getElementById("popup1");
 // empty array for opened cards
 let openedCards = [];
 
+// timer variables 
+// let second, minute and hour all start at 0
+let second = 0, minute = 0, hour = 0;
+// let timer be represented by timer class
+let timer = document.querySelector(".timer");
+// let interval be accessible for setInterval function
+let interval;
+
 // display card function toggles between open and show classes to display card on click
 const displayCard = function() {
   // open cards
@@ -68,18 +76,21 @@ function startGame() {
     cards[i].classList.remove("show", "open", "match", "disabled");
   }
   // reset moves
-  // let moves = 0;
-  // counter.innerHTML = moves;
+  moves = 0;
+  counter.innerHTML = moves;
   // reset rating
   for (let i=0; i < stars.length; i++) {
-    stars[i].style.color = "#FFD700";
+    stars[i].style.color = "#f2a17c";
     stars[i].style.visibility = "visible";
   }
   // reset timer when new game starts
-  // let timer = document.querySelector(".timer");
-  // timer.innerHTML = "0 mins 0 secs";
+  second = 0;
+  minute = 0;
+  hour = 0;
+  let timer = document.querySelector(".timer");
+  timer.innerHTML = "0 mins 0 secs";
   //clear any running interval
-  // clearInterval(interval);
+  clearInterval(interval);
 }
 
 // once the window page has loaded, run start game function to ensure that a shuffled deck in displayed
@@ -161,6 +172,7 @@ function enable() {
 function moveCounter() {
   // add 1 to move variable
   moves++;
+  // display new moves number 
   counter.innerHTML = moves;
 
   //start timer on first move
@@ -178,7 +190,7 @@ function moveCounter() {
     for (i = 0; i < 3; i++) {
       //if 2 or more stars
       if(i > 1) {
-        // collapse visibility 
+        // collapse visibility of third
         stars[i].style.visibility = "collapse";
       }
     }
@@ -188,7 +200,7 @@ function moveCounter() {
     for (i = 0; i < 3; i++) {
       // if 1 or more stars
       if (i > 0) {
-        // collapse visibility
+        // collapse visibility of 2nd star
         stars[i].style.visibility = "collapse"; 
       }
     }
@@ -197,9 +209,6 @@ function moveCounter() {
 
 //when player starts game, timer to start
 //once player wins game, timer to stop
-let second = 0, minute = 0;
-let timer = document.querySelector(".timer");
-let interval;
 
 function startTimer() {
   interval = setInterval(function() {
@@ -226,11 +235,11 @@ function congratulations() {
     //let star rating equal number of stars
     let starRating = document.querySelector(".stars").innerHTML;
     //display number of moves
-    document.getElementById("finalMove").innerHTML = moves;
+    document.getElementById("final-move").innerHTML = moves;
     // display star rating
-    document.getElementById("starRating").innerHTML = starRating;
+    document.getElementById("star-rating").innerHTML = starRating;
     //display total time
-    document.getElementById("totalTime").innerHTML = finalTime;
+    document.getElementById("total-time").innerHTML = finalTime;
     //close icon for popUp
     closePopUp();
   };

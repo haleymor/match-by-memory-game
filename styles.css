@@ -10,18 +10,16 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 /* General styling */
 
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   background: #E6EBE0;
 	font-size: 16px;
 	font-family: 'Roboto', sans-serif;
 	text-transform: uppercase;
+}
+
+header {
+	margin: 0 auto;
+	text-align: center;
 }
 
 h1 {
@@ -35,18 +33,23 @@ p {
 }
 
 .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+	max-width: 1080px;
 }
 
 /* Cards Styling */
 
+.cards {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
 .deck {
-  width: 85%;
+	width: 85%;
   background: #9bc1bc;
-  padding: 1rem;
+  padding: 16px;
   border-radius: 4px;
   box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
   display: flex;
@@ -59,7 +62,7 @@ p {
 .deck .card {
   height: 3.7rem;
   width: 3.7rem;
-	margin: 0.2rem 0.2rem;
+	margin: 0.1rem 0.1rem;
 	background: #1446a0;
 	font-size: 0;
 	color: #ffffff;
@@ -106,36 +109,37 @@ p {
  * Styles for the Score Panel
  */
 
-
 .score-panel {
-	text-align: left;
-	margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+}
+
+
+.display-details {
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
 }
 
 .score-panel .stars {
-	margin: 0;
 	padding: 0;
-	display: inline-block;
-	margin: 0 5px 0 0;
+	margin: 0 auto;
+	display: flex;
 }
+
 
 .score-panel .stars li {
 	list-style: none;
-	display: inline-block;
+	padding: 3px;
 }
 
 .score-panel .restart {
-	float: right;
 	cursor: pointer;
 }
 
-
-.fa-star {
-	color: #f2c57c;
-}
-
 .timer {
-	display: inline-block;
 	margin: 0 16px;
 }
 
@@ -282,7 +286,7 @@ p {
 	}
 
 	50% {
-		transform: scale3d(1.2, 1.2, 1.2);
+		transform: scale3d(1.1, 1.1, 1.1);
 	}
 
 	to {
@@ -311,18 +315,18 @@ p {
 ****************/
 
 @media (min-width: 768px) {
-	.wrapper {
+	.cards {
 		font-size: 22px;
 	}
 
 	.deck {
-		width: 660px;
-		height: 680px;
+		width: 600px;
+		height: 570px;
 	}
 
 	.deck .card {
-		height: 125px;
-		width: 125px;
+		height: 120px;
+		width: 120px;
 	}
 
 }

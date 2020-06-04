@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <header class="wrapper">
+  <header class="title">
     <h1>Match By Memory</h1>
     <p>Click the cards below to find all 8 pairs and try to earn all three stars!</p>
   </header>
@@ -29,13 +29,16 @@
         <i class="fa fa-star"></i>
       </li>
     </ul>
-    <div class="moves">
-
-    </div>
-    <span class="moves">0</span> Move(s)
-    <div class="timer"></div>
-    <div class="restart" onclick="startGame()">
-      <i class="fas fa-redo"></i>
+    <div class="display-details">
+      <div class="display-moves">
+        <p><span class="moves">0</span> Moves(s)</p> 
+      </div>
+      <div class="display-timer">
+        <p class="timer"></p>
+      </div>
+      <div class="restart" onclick="startGame()">
+        <i class="fas fa-redo"></i>
+      </div>
     </div>
   </section>
   
@@ -104,7 +107,7 @@
         <p>in <span id="total-time"></span></p>
         <p>Rating: <span id="star-rating"></span></p>
       </div>
-      <button id="play-again" onclick="startGame()">
+      <button id="play-again" onclick="playAgain()">
         Play Again
       </button>
     </div>
